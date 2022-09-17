@@ -17,13 +17,13 @@ linked list and remove duplicate numbers in the list.
 Then print the entire linked list from the head to 
 tail and once more from tail to head. 
 
-Add at the end of list - completed
-Remove
-Insert at - completed
+Add at the end of list - Completed
+Remove - Completed
+Insert at - Completed
 Sort
-Print/ return number of elements in list
-Print from head to tail - completed
-Print from tail to head
+Print/ return number of elements in list - Completed
+Print from head to tail - Completed
+Print from tail to head - Completed
 
 -Optional-
 Pop function (which every time this function is called one item from the end of the list is 
@@ -44,14 +44,20 @@ int main() {
 	for (int i = 0; i < size; i++) {
 		//Blendre.addAtEnd(arrey[i] = rand() % 101);
 		Blendre.addAtEnd(i);
-		//std::cout << arrey[i] << std::endl;
 	}
-	//std::cout << std::endl;
 
+	// SATAN! >:)
 	Blendre.insertAt(666, 13);
+
+
+	Blendre.remove(0);
+	Blendre.remove(0);
+	Blendre.remove(0);
+	
+	std::cout << "Found " << Blendre.amountOfElements() << " elements" << std::endl;
 
 	Blendre.printHeadToTail();
 	Blendre.printTailToHead();
-	
-	std::cout << "Found " << Blendre.amountOfElements() << " elements" << std::endl;
+
+	std::cout << Blendre.Head->Data << std::endl;
 }
