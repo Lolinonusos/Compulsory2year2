@@ -42,14 +42,16 @@ int main() {
 	std::srand(time(0));
 	
 	for (int i = 0; i < size; i++) {
-		Blendre.addAtEnd(arrey[i] = rand() % 101);
+		//Blendre.addAtEnd(arrey[i] = rand() % 101);
+		Blendre.addAtEnd(i);
 		//std::cout << arrey[i] << std::endl;
 	}
 	//std::cout << std::endl;
-	std::cout << "Found " << Blendre.amountOfElements() << " elements" << std::endl;
 
 	Blendre.insertAt(666, 13);
 
 	Blendre.printHeadToTail();
-
+	Blendre.printTailToHead();
+	
+	std::cout << "Found " << Blendre.amountOfElements() << " elements" << std::endl;
 }

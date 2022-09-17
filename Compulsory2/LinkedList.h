@@ -13,6 +13,9 @@ public:
 		Prev = nullptr;
 	}
 	
+	~Node() {
+		
+	}
 	
 };
 	
@@ -40,6 +43,10 @@ public:
 	void printHeadToTail();
 
 	void printTailToHead();
+
+	~LinkedList() {
+		
+	}
 };
 
 
