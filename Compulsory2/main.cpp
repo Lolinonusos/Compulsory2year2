@@ -2,6 +2,7 @@
 #include <ctime> 
 
 #include "LinkedList.h"
+#include "LLSorters.h"
 
 /*
 Task 2: 
@@ -18,7 +19,7 @@ Then print the entire linked list from the head to
 tail and once more from tail to head. 
 
 Add at the end of list - Completed
-Remove - Completed
+Remove - Partially Completed
 Insert at - Completed
 Sort
 Print/ return number of elements in list - Completed
@@ -42,8 +43,8 @@ int main() {
 	std::srand(time(0));
 	
 	for (int i = 0; i < size; i++) {
-		//Blendre.addAtEnd(arrey[i] = rand() % 101);
-		Blendre.addAtEnd(i);
+		Blendre.addAtEnd(arrey[i] = rand() % 101);
+		//Blendre.addAtEnd(i);
 	}
 
 	// SATAN! >:)
@@ -53,11 +54,24 @@ int main() {
 	Blendre.remove(0);
 	Blendre.remove(0);
 	Blendre.remove(0);
+
+	
 	
 	std::cout << "Found " << Blendre.amountOfElements() << " elements" << std::endl;
 
+
+	selectionSort(Blendre.Head, Blendre.amountOfElements());
+
+
+
+
+
+
+
+	
+	
 	Blendre.printHeadToTail();
 	Blendre.printTailToHead();
 
-	std::cout << Blendre.Head->Data << std::endl;
+	//std::cout << Blendre.Head->Data << std::endl;
 }

@@ -38,6 +38,8 @@ public:
 
 	void insertAt(int dataValue, int index);
 
+	void sortedInsert(Node* HeadRef, Node* newNode);
+	
 	int amountOfElements();
 
 	void printHeadToTail();

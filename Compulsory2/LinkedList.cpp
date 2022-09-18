@@ -20,14 +20,13 @@ void LinkedList::addAtEnd(int value) {
 	}
 }
 
+
 void LinkedList::findDuplicate() {
 }
 
 void LinkedList::remove(int index) {
 
 	Node* del = Head;
-	Node* NextNode = nullptr;
-	Node* PrevNode = nullptr;
 	
 	// Index is less than zero
 	if (index < 0) {
@@ -36,21 +35,15 @@ void LinkedList::remove(int index) {
 	}
 
 	// Index 0 is the head
+	// Delete Head node
 	if (index == 0) {
-		// Head = Head->Next;
-		// del = Head->Prev;
 		Head = del->Next;
 		Head->Prev = nullptr;
 		
 		free(del);
-		
-		// NextNode = del->Next;
-		// NextNode->Prev = nullptr;
-		//
-		// Head = NextNode;
+		return;
 	}
 	else {
-		
 		// Find node to remove
 		for (int i = 0; i <= index - 1; i++) {
 			del = del->Next;
@@ -69,10 +62,12 @@ void LinkedList::remove(int index) {
 		NextNode->Prev = PrevNode;
 		PrevNode->Next = NextNode;
 
-		// Removes node del points to and frees up the memory
+		// Removes the node del points to and frees up the memory
 		free(del);
+		return;
 	}
 }
+
 
 void LinkedList::insertAt(int dataValue, int index) {
 	Node* temp = Head;
@@ -100,6 +95,39 @@ void LinkedList::insertAt(int dataValue, int index) {
 	
 }
 
+
+void LinkedList::sortedInsert(Node* HeadRef, Node* newNode) {
+
+	Node* current;
+
+	if (HeadRef == nullptr) {
+		HeadRef = newNode;
+	}
+	
+	else if (HeadRef->Data >= newNode->Data) {
+		newNode->Next = HeadRef;
+		newNode->Next->Prev = newNode;
+		HeadRef = newNode;
+	}
+
+	else {
+		current = HeadRef;
+		while(current->Next != nullptr && current->Next->Data < newNode->Data) {
+			current = current->Next;
+		}
+	}
+
+	newNode->Next = current->Next;
+
+	if (current->Next != nullptr) {
+		newNode->Next->Prev = newNode;
+	}
+	current->Next = newNode;
+	newNode->Prev = current;
+	
+}
+
+
 int LinkedList::amountOfElements() {
 	Node* temp = Head;
 
@@ -124,6 +152,7 @@ void LinkedList::printHeadToTail() {
 	}
 }
 
+
 void LinkedList::printTailToHead() {
 	Node * printPtr = Tail;
 
@@ -134,4 +163,3 @@ void LinkedList::printTailToHead() {
 		printPtr = printPtr->Prev;
 	}
 }
-
