@@ -1,11 +1,12 @@
 ﻿#include "LinkedList.h"
 #include <iostream>
 
+
 void LinkedList::addAtEnd(int value) {
 	
-	Node* node1 = new Node();
-	node1->Data = value;
+	Node* node1 = new Node(value);
 
+	
 	node1->Next = nullptr;
 	node1->Prev = nullptr;
 	
@@ -22,7 +23,48 @@ void LinkedList::addAtEnd(int value) {
 
 
 void LinkedList::findDuplicate() {
+
+	std::cout << "Finding duplicates..." << std::endl;
+	Node* nodePtr = Head; // Points to a node
+	Node* isDupe = nodePtr; // Points to a different node
+	
+	Node* toRemove;
+	Node* prevPtr;
+	
+	int nodesRemoved = 0;
+	
+	while (nodePtr != nullptr) {
+		while (isDupe != nullptr) {
+		
+
+			isDupe = isDupe->Next;
+			std::cout << isDupe->Data << std::endl;
+
+			if (nodePtr->Data == isDupe->Data) {
+
+				prevPtr = isDupe->Prev;
+				toRemove = isDupe;
+				isDupe = isDupe->Next;
+
+				prevPtr->Next = isDupe;
+				isDupe->Prev = prevPtr;
+				
+				free(toRemove);
+				nodesRemoved += 1;
+			}
+			//std::cout << "Got here" << std::endl;
+			
+		}
+		
+		std::cout << "Got here" << std::endl;
+		nodePtr = nodePtr->Next;
+		isDupe = nodePtr;
+
+	}
+
+	std::cout << "Removed " << nodesRemoved << " nodes" << std::endl;
 }
+
 
 void LinkedList::remove(int index) {
 
@@ -72,8 +114,8 @@ void LinkedList::remove(int index) {
 void LinkedList::insertAt(int dataValue, int index) {
 	Node* temp = Head;
 
-	Node* node1 = new Node();
-	node1->Data = dataValue;
+	Node* node1 = new Node(dataValue);
+	//node1->Data = dataValue;
 	
 	// Move temp to correct position
 	for (int i = 0; i <= index; i++) {
@@ -96,35 +138,38 @@ void LinkedList::insertAt(int dataValue, int index) {
 }
 
 
-void LinkedList::sortedInsert(Node* HeadRef, Node* newNode) {
+void LinkedList::sortedInsert(int dataValue) {
 
-	Node* current;
+	Node* newNode = new Node(dataValue);
 
-	if (HeadRef == nullptr) {
-		HeadRef = newNode;
-	}
-	
-	else if (HeadRef->Data >= newNode->Data) {
-		newNode->Next = HeadRef;
-		newNode->Next->Prev = newNode;
-		HeadRef = newNode;
-	}
-
-	else {
-		current = HeadRef;
-		while(current->Next != nullptr && current->Next->Data < newNode->Data) {
-			current = current->Next;
-		}
-	}
-
-	newNode->Next = current->Next;
-
-	if (current->Next != nullptr) {
-		newNode->Next->Prev = newNode;
-	}
-	current->Next = newNode;
-	newNode->Prev = current;
-	
+	Node* hPtr = Head;
+	// Node* current;
+	//
+	if (hPtr == nullptr) {
+	 	hPtr = newNode;
+	 }
+	//
+	// else if (HeadRef->Data >= newNode->Data) {
+	// 	newNode->Next = HeadRef;
+	// 	newNode->Next->Prev = newNode;
+	// 	HeadRef = newNode;
+	// }
+	//
+	// else {
+	// 	current = HeadRef;
+	// 	while(current->Next != nullptr && current->Next->Data < newNode->Data) {
+	// 		current = current->Next;
+	// 	}
+	// }
+	//
+	// newNode->Next = current->Next;
+	//
+	// if (current->Next != nullptr) {
+	// 	newNode->Next->Prev = newNode;
+	// }
+	// current->Next = newNode;
+	// newNode->Prev = current;
+	//
 }
 
 

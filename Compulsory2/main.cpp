@@ -21,10 +21,11 @@ tail and once more from tail to head.
 Add at the end of list - Completed
 Remove - Partially Completed
 Insert at - Completed
-Sort
+Sort - Cheated
 Print/ return number of elements in list - Completed
 Print from head to tail - Completed
 Print from tail to head - Completed
+Find and remove duplicates
 
 -Optional-
 Pop function (which every time this function is called one item from the end of the list is 
@@ -62,7 +63,7 @@ int main() {
 
 	selectionSort(Blendre.Head, Blendre.amountOfElements());
 
-
+	Blendre.sortedInsert(64);
 
 
 
@@ -71,7 +72,10 @@ int main() {
 	
 	
 	Blendre.printHeadToTail();
-	Blendre.printTailToHead();
+	//Blendre.printTailToHead();
 
-	//std::cout << Blendre.Head->Data << std::endl;
+	Blendre.findDuplicate();
+	
+	Blendre.printHeadToTail();
+
 }

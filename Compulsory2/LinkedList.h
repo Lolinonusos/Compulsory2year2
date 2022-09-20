@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include <iterator>
 
 class Node {
 public:
@@ -7,8 +6,8 @@ public:
 	Node* Next;
 	Node* Prev;
 	
-	Node() {
-		Data = 0;
+	Node(int value) {
+		Data = value;
 		Next = nullptr;
 		Prev = nullptr;
 	}
@@ -30,6 +29,7 @@ public:
 		Tail = nullptr;
 		Head = Tail;
 	}
+	
 	void addAtEnd(int value);
 	
 	void findDuplicate();
@@ -38,7 +38,7 @@ public:
 
 	void insertAt(int dataValue, int index);
 
-	void sortedInsert(Node* HeadRef, Node* newNode);
+	void sortedInsert(int dataValue);
 	
 	int amountOfElements();
 
