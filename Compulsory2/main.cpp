@@ -25,7 +25,7 @@ Sort - Cheated
 Print/ return number of elements in list - Completed
 Print from head to tail - Completed
 Print from tail to head - Completed
-Find and remove duplicates
+Find and remove duplicates - Completed
 
 -Optional-
 Pop function (which every time this function is called one item from the end of the list is 
@@ -78,4 +78,5 @@ int main() {
 	
 	Blendre.printHeadToTail();
 
+	return 0;
 }

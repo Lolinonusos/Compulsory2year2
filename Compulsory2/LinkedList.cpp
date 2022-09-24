@@ -26,40 +26,34 @@ void LinkedList::findDuplicate() {
 
 	std::cout << "Finding duplicates..." << std::endl;
 	Node* nodePtr = Head; // Points to a node
-	Node* isDupe = nodePtr; // Points to a different node
 	
-	Node* toRemove;
-	Node* prevPtr;
+	Node* nextPtr; // Points to node past the dupe data
 	
 	int nodesRemoved = 0;
+
+	if (nodePtr == nullptr) {
+		return;
+	}
 	
-	while (nodePtr != nullptr) {
-		while (isDupe != nullptr) {
+	while (nodePtr->Next != nullptr) {
 		
-
-			isDupe = isDupe->Next;
-			std::cout << isDupe->Data << std::endl;
-
-			if (nodePtr->Data == isDupe->Data) {
-
-				prevPtr = isDupe->Prev;
-				toRemove = isDupe;
-				isDupe = isDupe->Next;
-
-				prevPtr->Next = isDupe;
-				isDupe->Prev = prevPtr;
+		if (nodePtr->Data == nodePtr->Next->Data) {
+			
+			nextPtr = nodePtr->Next->Next;
+			free(nodePtr->Next); // Removes the dupe
+		
+			nodePtr->Next = nextPtr;
+			nextPtr->Prev = nodePtr;
 				
-				free(toRemove);
-				nodesRemoved += 1;
-			}
-			//std::cout << "Got here" << std::endl;
+			nodesRemoved += 1;
+
+			std::cout << "Node removed" << std::endl;
 			
 		}
-		
-		std::cout << "Got here" << std::endl;
-		nodePtr = nodePtr->Next;
-		isDupe = nodePtr;
-
+		else {
+			std::cout << "Got here" << std::endl;
+			nodePtr = nodePtr->Next;
+		}
 	}
 
 	std::cout << "Removed " << nodesRemoved << " nodes" << std::endl;
