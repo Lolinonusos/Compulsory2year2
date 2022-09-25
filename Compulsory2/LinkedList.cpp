@@ -51,7 +51,7 @@ void LinkedList::findDuplicate() {
 			
 		}
 		else {
-			std::cout << "Got here" << std::endl;
+			//std::cout << "Got here" << std::endl;
 			nodePtr = nodePtr->Next;
 		}
 	}

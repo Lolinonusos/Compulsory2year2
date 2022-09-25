@@ -50,7 +50,7 @@ int main() {
 
 	// SATAN! >:)
 	Blendre.insertAt(666, 13);
-
+	// 3AM is the glitching hour
 
 	Blendre.remove(0);
 	Blendre.remove(0);
@@ -77,6 +77,8 @@ int main() {
 	Blendre.findDuplicate();
 	
 	Blendre.printHeadToTail();
+
+	Blendre.printTailToHead();
 
 	return 0;
 }
